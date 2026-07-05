@@ -1,0 +1,30 @@
+{
+  "name": "ai-workshop-client",
+  "version": "1.0.0",
+  "description": "Client for AI workshop",
+  "keywords": [
+    "ai",
+    "training",
+    "node",
+    "workshop",
+    "llm"
+  ],
+  "homepage": "https://github.com/mrugacz95/ai-workshop-client#readme",
+  "bugs": {
+    "url": "https://github.com/mrugacz95/ai-workshop-client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrugacz95/ai-workshop-client.git"
+  },
+  "license": "MIT",
+  "author": "Marcin Mrugas",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "openai": "^6.45.0"
+  }
+}
