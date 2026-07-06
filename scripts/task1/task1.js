@@ -1,6 +1,8 @@
-const OpenAI = require("openai");
-const fs = require("node:fs/promises");
-const path = require("node:path");
+import OpenAI from "openai";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function readInput() {
     const inputPath = path.join(__dirname, "input.txt");
@@ -35,7 +37,6 @@ async function part2() {
             model: "google/gemma-4-e4b",
             instructions: "Odpowiedz na to pytanie.",
             input: question
-
         });
 
         const answer = response.output_text;

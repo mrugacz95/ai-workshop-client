@@ -19,12 +19,14 @@
   },
   "license": "MIT",
   "author": "Marcin Mrugas",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "task1": "node --env-file=.env scripts/task1/task1.js",
+    "task2": "node --env-file=.env scripts/task2/task2.js"
   },
   "dependencies": {
-    "openai": "^6.45.0"
+    "openai": "^6.45.0",
+    "zod": "^4.4.3"
   }
 }
