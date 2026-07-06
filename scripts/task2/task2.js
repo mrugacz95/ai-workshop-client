@@ -44,9 +44,6 @@ async function part1() {
             },
         });
 
-
-        console.log(response)
-
         const category = response.output_parsed;
 
         console.log(category)
@@ -61,20 +58,51 @@ async function part1() {
 
 async function part2() {
     const input = await readInput();
+    const comments = input.split("\n");
+
 
     const client = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
         baseURL: process.env.OPENAI_BASE_URL,
     });
 
-    const answer = "//todo"
+    const CommentCategory = z.object({
+        reasoning: z.string(),
+        confidence: z.number(),
+        name: z.enum(["positive", "negative", "mixed", "unknown"]),
+    });
 
-    console.log("Answer:", answer);
+    console.log(comments);
+
+    const answers = [];
+
+    for (const comment of comments) {
+        const response = await client.responses.parse({
+            model: "gpt-4o-mini",
+            input: [
+                {role: "system", content: "Skategoryzuj podany komentarz."},
+                {role: "user", content: comment,},
+            ],
+            text: {
+                format: zodTextFormat(CommentCategory, "category"),
+            },
+        });
+
+        const category = response.output_parsed;
+
+        console.log(category)
+
+        answers.push(category["name"])
+    }
+
+    const answer = answers.join(",")
+
+    console.log(answer);
 }
 
 async function main() {
-    part1()
-    // part2()
+    // part1()
+    part2()
 }
 
 main().catch((err) => {
